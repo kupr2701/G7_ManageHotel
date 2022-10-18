@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Chambers Management</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+</head>
+<body>
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" th:href="@{/categories}" id="navbarDropdownMenuLinke" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinke">
+                        <li><a class="dropdown-item" th:href="@{/categories/new}">Action</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" th:href="@{/chambres}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Chambres
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" th:href="@{/chambres/new}">Action</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+
+<div class="container my-2">
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/chambres/filter2}" method="get">
+                <div class="form-group">
+                    <label>Etage:</label>
+                    <input type="number" name="etagesf" th:value="${filter1}"/>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col">
+            <form th:action="@{/chambres/filter1}" method="get">
+                <div class="form-group">
+                    <label >Litbebe Filter</label>
+                    <select name="litBebef" class="form-control">
+                        <option value="1">OUI</option>
+                        <option value="0">NON</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <a th:href = "@{/chambres}" class="btn btn-light btn-outline-dark">Erase filters</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container my-2">
+    <h1>Gérer Chambres</h1>
+    <hr />
+    <a th:href = "@{/chambres/new}" class="btn btn-primary btn-sm mb-3">Ajouter Chambre</a>
+    <h2 class="mb-3">Liste Chambres</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom Chambre</th>
+            <th>Etage Chambre </th>
+            <th>Theme Chambre</th>
+            <th>Lit Bebe ?</th>
+
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="chambre : ${listChambres}">
+            <td th:text="${chambre.num}"></td>
+            <td th:text="${chambre.etage}"></td>
+            <td th:text="${chambre.theme}"></td>
+            <td th:text="${chambre.litBebe}"></td>
+
+            <td><a th:href="@{/chambres/update(id=${chambre.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/chambres/delete(id=${chambre.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href = "@{/login}" >Back to Welcome Page</a>
+</div>
+</body>
+</html>
