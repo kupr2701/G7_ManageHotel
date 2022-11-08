@@ -1,0 +1,74 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">-->
+<!--<head>-->
+<!--    <title>Manage hotel</title>-->
+<!--    <meta charset="UTF-8"/>-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"-->
+<!--          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <nav class="navbar navbar-expand-lg navbar-blue bg-blue">-->
+
+<!--            <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+<!--                <a class="navbar-brand" href="#" th:href="@{/}">inscription et connection-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</header>-->
+<!--<br>-->
+<!--<div class="container">-->
+<!--    <h1>Manage Hotel</h1>-->
+<!--    <hr />-->
+<!--    <h2>Nouvelle Chambre</h2>-->
+
+
+<!--    <form action="#" th:action="@{/chambres/saveNew}" th:object="${chambre}" method="POST">-->
+
+<!--        <div class="mb-4 col-4">-->
+<!--            <label th:for="num">Num</label>-->
+<!--            <input type="number" th:field="*{num_chambre}" placeholder="Num Chambre" class="form-control" />-->
+<!--            <span class="text-danger" th:errors="*{num_chambre}"></span>-->
+<!--        </div>-->
+<!--        <div class="mb-4 col-4">-->
+<!--            <label th:for="nbre_chambre">nombre chambre</label>-->
+<!--            <input type="number" th:field="*{nbre_chambre}" placeholder="Etage Chambre" class="form-control" />-->
+<!--            <span class="text-danger" th:errors="*{nbre_chambre}"></span>-->
+<!--        </div>-->
+<!--        <div class="mb-4 col-4">-->
+<!--            <label th:for="etat"></label>-->
+<!--            <input type="text" th:field="*{etat}" placeholder="Theme Chambre" class="form-control" />-->
+<!--            <span class="text-danger" th:errors="*{etat}"></span>-->
+<!--        </div>-->
+<!--        <div class="mb-4 col-4">-->
+<!--            <label th:for="type">type</label>-->
+<!--            <select th:field="*{type}" class="form-control">-->
+<!--                <option value="1">luxe</option>-->
+<!--                <option value="0">classique</option>-->
+<!--            </select>-->
+<!--            <span class="text-danger" th:errors="*{type}"></span>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="mb-4 col-4">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label th:for="reservation">reservation</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <select class="form-control" th:field="*{reservation}">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option th:value="0">Select reservation</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option th:each="categorie : ${listReservations}"&ndash;&gt;-->
+<!--&lt;!&ndash;                        th:value="${reservation.id}"&ndash;&gt;-->
+<!--&lt;!&ndash;                        th:text="${reservation.date}"></option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div>-->
+<!--            <button type="submit" class="btn btn-primary col-2">Save</button>-->
+<!--            <a th:href = "@{/chambres}" class="btn btn-danger col-2">Cancel</a>-->
+<!--        </div>-->
+<!--    </form>-->
+
+<!--    <hr />-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

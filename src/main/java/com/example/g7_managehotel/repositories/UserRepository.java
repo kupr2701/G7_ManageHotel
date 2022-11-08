@@ -8,10 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    /**
-     * Définit une fonction qui permet de récupérer un utilisateur sur base du username
-     * @param username
-     * @return
-     */
+
     User findByUsername(String username);
 }

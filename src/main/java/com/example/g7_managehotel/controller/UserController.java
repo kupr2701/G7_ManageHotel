@@ -1,6 +1,7 @@
-package com.example.g7_managehotel.controller.user;
+package com.example.g7_managehotel.controller;
 
 
+import com.example.g7_managehotel.controller.Dto.UserRegistrationDto;
 import com.example.g7_managehotel.entities.User;
 import com.example.g7_managehotel.services.impl.UsersDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,10 @@ public class UserController {
 
     }
     @PostMapping()
-    public String RegisterUserAccount(@ModelAttribute("user") Model model){
-
-        return "redirect:/user_form";
+    public String RegisterUserAccount(@ModelAttribute("user") UserRegistrationDto userRegistrationDto){
+        userService.save(userRegistrationDto);
+        return "redirect:/user_form?success";
     }
-
 
 
 

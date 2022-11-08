@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>index</title>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 </head>
 <body>
+<header>
+  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <a class="navbar-brand" href="#" th:href="@{/}">inscription et connection
+      </a>
+    </div>
+  </nav>
+  </div>
+</header>
+<br>
 <div class="container" >
   <marquee><h1>HOTEL Management</h1></marquee>
   <div class="p-2">

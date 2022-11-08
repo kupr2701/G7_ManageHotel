@@ -2,9 +2,6 @@ package com.example.g7_managehotel.entities;
 
 
 import com.example.g7_managehotel.constants.RoleEnum;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -16,9 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@Setter
-@Getter
-@ToString
+
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -56,6 +51,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Collection<RoleEnum> roles;
 
+//    @OneToOne(fetch = FetchType.EAGER, mappedBy = "chambre")
+//    private Chambre chambre;
+
     @Column(name = "account_non_expired")
     private boolean accountNonExpired;
 
@@ -83,6 +81,7 @@ public class User implements UserDetails {
         this.password = password;
         this.lastname = lastname;
         this.firstname = firstname;
+
     }
 
 
@@ -94,4 +93,70 @@ public class User implements UserDetails {
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public Collection<RoleEnum> getRoles() {
+        return roles;
+    }
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setRoles(Collection<RoleEnum> roles) {
+        this.roles = roles;
+    }
 }

@@ -16,8 +16,6 @@ public class G7ManageHotelApplication {
 
     @GetMapping("/test")
     public List<User> hello(){
-        return List.of(new User ("joel", "genteeeeuu","kuifo", "yimga"
-
-                                    ));
+        return List.of(new User ("joel", "genteeeeuu","kuifo", "yimga"));
     }
 }
