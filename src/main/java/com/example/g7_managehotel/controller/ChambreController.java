@@ -19,6 +19,8 @@ public class ChambreController {
 
     @Autowired
     private ChambreRepository chambreRepository;
+
+
     @GetMapping
     public String listChambre(Model model) {
 
@@ -31,7 +33,6 @@ public class ChambreController {
     public String newChambre(Model model) {
 
           model.addAttribute("chambre", new Chambre());
-//        model.addAttribute("listReservation", reservationRepository.findAll());
 
         return "/chambres";
     }
