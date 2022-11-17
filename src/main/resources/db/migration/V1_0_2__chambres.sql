@@ -1,5 +1,5 @@
 create table chambres (
-    id_chambre bigint not null,
+    id_chambre bigint not null AUTO_INCREMENT,
     num_chambre int not null,
     nbre_place int not null,
     etat varchar(255) not null,
