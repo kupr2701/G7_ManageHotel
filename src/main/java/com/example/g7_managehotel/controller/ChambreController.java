@@ -1,7 +1,8 @@
 package com.example.g7_managehotel.controller;
 
 import com.example.g7_managehotel.entities.Chambre;
-import com.example.g7_managehotel.repositories.ChambreRepository;
+ import com.example.g7_managehotel.repositories.ChambreRepository;
+import com.example.g7_managehotel.services.impl.ChambresDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,37 +18,43 @@ import javax.validation.Valid;
 @RequestMapping("/chambres")
 public class ChambreController {
 
-    @Autowired
-    private ChambreRepository chambreRepository;
+    private final ChambreRepository chambreRepository;
 
+    private final ChambresDetailsServiceImpl chambresDetailsServiceImpl ;
+
+    public ChambreController(ChambreRepository chambreRepository, ChambresDetailsServiceImpl chambresDetailsServiceImpl) {
+        this.chambreRepository = chambreRepository;
+        this.chambresDetailsServiceImpl = chambresDetailsServiceImpl;
+    }
 
     @GetMapping
     public String listChambre(Model model) {
 
         model.addAttribute("listChambres", chambreRepository.findAll());
 
-        return "/chambres";
+        return "chambres";
     }
 
     @GetMapping("/new")
     public String newChambre(Model model) {
+        Chambre chambre = new Chambre();
 
-          model.addAttribute("chambre", new Chambre());
+        model.addAttribute("chambre", chambre);
+        model.addAttribute("listChambres", chambreRepository.findAll());
 
-        return "/chambres";
+        return "new_chambres";
     }
     @PostMapping("/saveNew")
     public String saveNewChambre(@ModelAttribute("chambre") @Valid Chambre chambre, Errors errors, Model model)
     {
 
-//        if (errors.hasErrors())
-//        {
-//            model.addAttribute("listReservation", reservationRepository.findAll());
-//            return "new_chambres";
-//        }
+        if (errors.hasErrors())
+        {
+            return "new_chambres";
+        }
 
-          chambreRepository.save(chambre);
-          model.addAttribute("listChambres", chambreRepository.findAll());
+        chambresDetailsServiceImpl.save(chambre);
+//        model.addAttribute("listChambres", chambreRepository.findAll());
 //        model.addAttribute("listReservation", reservationRepository.findAll());
 
         return "redirect:/chambres";

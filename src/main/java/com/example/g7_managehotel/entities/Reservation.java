@@ -14,11 +14,11 @@ public class Reservation {
     @Column(name = "id_reservation")
     private Long id;
 
-    @Column(name = "nbre_personne", nullable = false, unique = false)
-    private Integer nbre_personne;
-
     @Column(name = "num_chambre", nullable = false, unique = false)
     private Integer num_chambre;
+
+    @Column(name = "nbre_personne", nullable = false, unique = false)
+    private Integer nbre_personne;
 
     @Column(name = "date")
     private Date date;

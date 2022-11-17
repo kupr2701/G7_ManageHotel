@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "chambres")
-public class Chambre {
+public class Chambre{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_chambre")

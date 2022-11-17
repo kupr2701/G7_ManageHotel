@@ -17,9 +17,10 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" th:href="@{/chambres}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Chambres
+                    <a class="nav-link dropdown-toggle" th:href="@{/reservations}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reservations
                     </a>
+
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" th:href="@{/chambres/new}">Action</a></li>
                     </ul>
@@ -68,8 +69,8 @@
         </thead>
         <tbody>
         <tr th:each="chambre : ${listChambres}">
-            <td th:text="${chambre.num}"></td>
-            <td th:text="${chambre.nbre}"></td>
+            <td th:text="${chambre.num_chambre}"></td>
+            <td th:text="${chambre.nbre_places}"></td>
             <td th:text="${chambre.etat}"></td>
             <td th:text="${chambre.type}"></td>
 
