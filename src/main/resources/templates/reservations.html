@@ -18,18 +18,18 @@
                 <a class="nav-link dropdown-toggle" th:href="@{/chambres}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Chambres
                 </a>
-                <a th:href = "@{/reservations/new}" class="btn btn-primary btn-sm mb-3">Add Reservation</a>
+
 
             </div>
         </nav>
     </div>
 </header>
-
+<div class="container my-2">
         <div class="col">
             <form th:action="@{/reservations/filter2}" method="get">
                 <div class="form-group">
                     <label>date:</label>
-                    <input type="date" name="dateNaiss" th:value="${filter2}"/>
+                    <input type="date" name="date" th:value="${filter2}"/>
                     <button type="submit">Search</button>
                 </div>
             </form>
@@ -56,9 +56,12 @@
         </div>
     </div>
 </div>
-
+</div>
 <div class="container my-2">
-
+    <h1>gestion de reservations</h1>
+    <hr />
+    <a th:href = "@{/reservations/new}" class="btn btn-primary btn-sm mb-3">Add Reservation</a>
+    <h2 class="mb-3">Liste Reservations</h2>
     <table class="table table-striped">
         <thead>
         <tr>
