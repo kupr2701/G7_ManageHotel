@@ -8,22 +8,45 @@
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 </head>
 <body>
-
 <header>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <a class="navbar-brand" href="#" th:href="@{/}">inscription et connection
-                </a>
-                <a class="nav-link dropdown-toggle" th:href="@{/reservations}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Reservations
-                </a>
-            </div>
-        </nav>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" th:href="@{/reservations}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reservations
+                    </a>
+                    <a class="nav-link dropdown-toggle" th:href="@{/}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reservations
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" th:href="@{/chambres/new}">Action</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
 </header>
-<br>
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <nav class="navbar navbar-expand-lg navbar-blue bg-blue">-->
+
+<!--            <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+<!--                <a class="navbar-brand" href="#" th:href="@{/}">inscription et connection-->
+<!--                </a>-->
+<!--                <a class="nav-link dropdown-toggle" th:href="@{/reservations}" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                    Reservations-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</header>-->
+<!--<br>-->
 <div class="container">
     <h1>Manage Hotel</h1>
     <hr />

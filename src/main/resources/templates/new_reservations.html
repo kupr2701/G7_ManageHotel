@@ -8,22 +8,75 @@
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 </head>
 <body>
+<header>
 
-    <header>
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <a class="navbar-brand" href="#" th:href="@{/}">inscription et connection
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <!--        <a class="navbar-brand mt-2 mt-lg-0" href="#">-->
+                <!--          <img-->
+                <!--                  src="C:/Users/admin/Desktop/G7_ManageHotel/src/main/java/com/example/g7_managehotel/style/img/LOGO.png"-->
+                <!--                  height="15"-->
+                <!--                  alt="hmt Logo"-->
+                <!--                  loading="lazy"-->
+                <!--          />-->
+                <!--        </a>-->
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/chambres}">Chambres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/reservations}">Reservations</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="link-secondary me-3" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+
+                <!-- Notifications -->
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
+                        Login
                     </a>
-                    <a class="nav-link dropdown-toggle" th:href="@{/reservations}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Reservations
+                    <a class="btn btn-primary me-3" th:href = "@{/user_form}" >
+                        Sign up for free
                     </a>
                 </div>
-            </nav>
+            </div>
+            <!-- Right elements -->
         </div>
-    </header>
-    <br>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+</header>
+<br>
     <div class="container">
         <h1>Manage Hotel</h1>
         <hr />
