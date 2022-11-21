@@ -1,6 +1,7 @@
 package com.example.g7_managehotel.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -10,7 +11,6 @@ public class Chambre{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_chambre")
     private Long id;
-
 
     @Column(name = "num_chambre", nullable = false, unique = false)
     private Integer num_chambre;

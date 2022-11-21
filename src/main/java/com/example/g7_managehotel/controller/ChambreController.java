@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/chambres")
@@ -57,6 +56,39 @@ public class ChambreController {
 //        model.addAttribute("listChambres", chambreRepository.findAll());
 //        model.addAttribute("listReservation", reservationRepository.findAll());
 
+        return "redirect:/chambres";
+    }
+    @GetMapping("/update")
+    public String showUpdateChambreForm(@RequestParam(name="id") long id, Model model)
+    {
+        Optional<Chambre> optional = chambreRepository.findById(id);
+        Chambre chambre = null;
+        if (optional.isPresent())
+            chambre = optional.get();
+        else
+            throw new RuntimeException ("chambre not found for id: " + id);
+
+        model.addAttribute("chambre",chambre);
+        model.addAttribute("listChambres", chambreRepository.findAll());
+        return "update_chambres";
+    }
+    @PostMapping("/saveUpdate")
+    public String saveUpdateChambre(@ModelAttribute("chambre") @Valid Chambre chambre, Errors errors)
+    {
+        if (errors.hasErrors())
+        {
+            return "update_chambres";
+        }
+
+//        chambresDetailsServiceImpl
+        chambreRepository.save(chambre);
+        return "redirect:/chambres";
+    }
+    @GetMapping("/delete")
+    public String deleteChambre(@RequestParam(name="id") long id, Model model)
+    {
+
+            chambreRepository.deleteById(id);
         return "redirect:/chambres";
     }
 }
