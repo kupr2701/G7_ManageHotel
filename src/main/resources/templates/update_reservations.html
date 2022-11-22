@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
-    <title>index</title>
+    <title>Manage hotel</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
@@ -77,64 +77,37 @@
     <!-- Navbar -->
 </header>
 <br>
-<div class="container my-2">
-        <div class="col">
-            <form th:action="@{/reservations/filter2}" method="get">
-                <div class="form-group">
-                    <label>date:</label>
-                    <input type="date" name="date" th:value="${filter2}"/>
-                    <button type="submit">Search</button>
-                </div>
-            </form>
-        </div>
+    <div class="container">
+        <h1>Manage Hotel</h1>
+        <hr />
+        <h2>Update RESERVATION</h2>
 
-<!--        <div class="col">-->
-<!--            <form th:action="@{/employees/filter3}" method="get">-->
-<!--                <div class="form-group">-->
-<!--                    <label>Membre:</label>-->
-<!--                    <select name="depart">-->
-<!--                        <option th:value="0">Select member</option>-->
-<!--                        <option th:each="membr : ${listMembres}"-->
-<!--                                th:value="${membr.id}"-->
-<!--                                th:text="${membr.nom}" th:selected="${membr.id}==${filter3}"></option>-->
-<!--                    </select>-->
-<!--                    <button type="submit">Search</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
+        <form action="#" th:action="@{/reservations/saveUpdate}" th:object="${reservation}" method="POST">
+            <div class="mb-4 col-4">
+                <input type="hidden" th:field="*{id}" class="form-control" />
+            </div>
+            <div class="mb-4 col-4">
+                <label th:for="num_chambre">Numero de chambre</label>
+                <input type="number" min="1" max ="100" th:field="*{num_chambre}" placeholder="numero de chambre" required class="form-control" />
+                <span class="text-danger" th:errors="*{num_chambre}"></span>
+            </div>
+            <div class="mb-4 col-4">
+                <label th:for="nbre_personne">nombre de personne</label>
+                <input type="number" min="1" max ="5" th:field="*{nbre_personne}" placeholder="nombre de personne" required class="form-control" />
+                <span class="text-danger" th:errors="*{nbre_personne}"></span>
+            </div>
 
-    <div class="row mt-4">
-        <div class="col">
-            <a th:href = "@{/reservations}" class="btn btn-light btn-outline-dark">Erase filters</a>
-        </div>
-    </div>
+            <div class="mb-4 col-4">
+                <label th:for="date">date</label>
+                <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" class="form-control" />
+                <span class="text-danger" th:errors="*{date}"></span>
+            </div>
+
+                <button type="submit" class="btn btn-primary col-2">Save</button>
+                <a th:href = "@{/reservations}" class="btn btn-danger col-2">Cancel</a>
+        </form>
+
+        <hr />
 </div>
-<div class="container my-2">
-    <h1>gestion de reservations</h1>
-    <hr />
-    <a th:href = "@{/reservations/new}" class="btn btn-primary btn-sm mb-3">Add Reservation</a>
-    <h2 class="mb-3">Liste Reservations</h2>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Numero chambre</th>
-            <th>nombre de personnes</th>
-            <th>date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="reservation : ${listReservations}">
-            <td th:text="${reservation.num_chambre}"></td>
-            <td th:text="${reservation.nbre_personne}"></td>
-            <td th:text="${#calendars.format(reservation.date,'dd/MM/yyyy')}"></td>
-            <td><a th:href="@{/reservations/update(id=${reservation.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/reservations/delete(id=${reservation.id})}" class="btn btn-danger">Delete</a></td>
-        </tr>
-        </tbody>
-    </table>
-    <a th:href = "@{/}" >page d'accueil</a>
-</div>
-</body>
-</html>
-
+    </body>
+    </html>

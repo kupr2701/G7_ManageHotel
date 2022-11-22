@@ -77,34 +77,35 @@
     <!-- Navbar -->
 </header>
 <br>
-    <div class="container">
-        <h1>Manage Hotel</h1>
-        <hr />
-        <h2>Nouvelle RESERVATION</h2>
+<div class="container">
+    <h1>Manage Hotel</h1>
+    <hr />
+    <h2>New RESERVATION</h2>
 
-        <form action="#" th:action="@{/reservations/saveNew}" th:object="${reservation}" method="POST">
-            <div class="mb-4 col-4">
-                <label th:for="num_chambre">Numero de chambre</label>
-                <input type="number" min="1" max ="10" th:field="*{num_chambre}" placeholder="land number" required class="form-control" />
-                <span class="text-danger" th:errors="*{num_chambre}"></span>
-            </div>
-            <div class="mb-4 col-4">
-                <label th:for="nbre_personne">nombre de personne</label>
-                <input type="number" min="1" max ="10" th:field="*{num_chambre}" placeholder="land number" required class="form-control" />
-                <span class="text-danger" th:errors="*{nbre_personne}"></span>
-            </div>
+    <form action="#" th:action="@{/reservations/saveNew}" th:object="${reservation}" method="POST">
 
-            <div class="mb-4 col-4">
-                <label th:for="date">date</label>
-                <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" class="form-control" />
-                <span class="text-danger" th:errors="*{date}"></span>
-            </div>
+        <div class="mb-4 col-4">
+            <label th:for="num_chambre">Numero de chambre</label>
+            <input type="number" min="1" max ="100" th:field="*{num_chambre}" placeholder="numero chambre" required class="form-control" />
+            <span class="text-danger" th:errors="*{num_chambre}"></span>
+        </div>
+        <div class="mb-4 col-4">
+            <label th:for="nbre_personne">nombre de personne</label>
+            <input type="number" min="1" max ="5" th:field="*{nbre_personne}" placeholder="nombre personnes" required class="form-control" />
+            <span class="text-danger" th:errors="*{nbre_personne}"></span>
+        </div>
 
-                <button type="submit" class="btn btn-primary col-2">Save</button>
-                <a th:href = "@{/reservations}" class="btn btn-danger col-2">Cancel</a>
-        </form>
+        <div class="mb-4 col-4">
+            <label th:for="date">date</label>
+            <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" class="form-control" />
+            <span class="text-danger" th:errors="*{date}"></span>
+        </div>
 
-        <hr />
+        <button type="submit" class="btn btn-primary col-2">Save</button>
+        <a th:href = "@{/reservations}" class="btn btn-danger col-2">Cancel</a>
+    </form>
+
+    <hr />
 </div>
-    </body>
-    </html>
+</body>
+</html>

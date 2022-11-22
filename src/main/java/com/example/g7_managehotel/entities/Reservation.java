@@ -1,25 +1,28 @@
 package com.example.g7_managehotel.entities;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "reservations")
-public class Reservation {
+public class Reservation implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reservation")
     private Long id;
 
-    @Column(name = "num_chambre", nullable = false, unique = false)
+    @Column(name = "num_chambre")
     private Integer num_chambre;
 
-    @Column(name = "nbre_personne", nullable = false, unique = false)
+    @Column(name = "nbre_personne")
     private Integer nbre_personne;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date")
     private Date date;
 
@@ -55,5 +58,13 @@ public class Reservation {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
