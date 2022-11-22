@@ -24,11 +24,10 @@ public class Chambre{
     @Column(name = "types",length = 50, nullable = false, unique = false)
     private String type;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "chambre")
+    private Reservation reservation;
 
-//    @NotNull
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "id_user", nullable = false)
-//    private User user;
+
 
     public Chambre() {
 
@@ -80,5 +79,13 @@ public class Chambre{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 }

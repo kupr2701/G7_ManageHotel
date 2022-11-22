@@ -25,7 +25,9 @@ public class Reservation implements Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date")
     private Date date;
-
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ch_id")
+    private Chambre chambre;
     public Reservation(Integer nbre_personne, Integer num_chambre, Date date) {
         this.nbre_personne = nbre_personne;
         this.num_chambre = num_chambre;
@@ -66,5 +68,13 @@ public class Reservation implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
     }
 }
