@@ -2,6 +2,7 @@ package com.example.g7_managehotel.controller;
 
 
 import com.example.g7_managehotel.entities.Reservation;
+import com.example.g7_managehotel.repositories.ChambreRepository;
 import com.example.g7_managehotel.repositories.ReservationRepository;
 import com.example.g7_managehotel.services.impl.reservationDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,11 @@ public class ReservationController {
 
     @Autowired
     private ReservationRepository reservationRepository;
+    private final ChambreRepository chambreRepository;
 
+    public ReservationController(ChambreRepository chambreRepository) {
+        this.chambreRepository = chambreRepository;
+    }
 
     @GetMapping
     public String listReservation(Model model) {
@@ -29,26 +34,25 @@ public class ReservationController {
         return "reservations";
     }
     @GetMapping("/new")
-    public String newChambre(Model model) {
+    public String newReservation(Model model) {
         Reservation reservation = new Reservation();
 
         model.addAttribute("reservation", reservation);
-        model.addAttribute("listReservations", reservationRepository.findAll());
+        model.addAttribute("listChambres", chambreRepository.findAll());
 
         return "new_reservations";
     }
     @PostMapping("/saveNew")
-    public String saveNewReservation(@ModelAttribute("reservation") @Valid Reservation reservation, Errors errors)
+    public String saveNewReservation(@ModelAttribute("reservation") @Valid Reservation reservation, Errors errors, Model model)
     {
 
         if (errors.hasErrors())
         {
+            model.addAttribute("listChambres", chambreRepository.findAll());
             return "new_reservations";
         }
 
         reservationDetailsServiceImpl.save(reservation);
-//        model.addAttribute("listChambres", chambreRepository.findAll());
-//        model.addAttribute("listReservation", reservationRepository.findAll());
 
         return "redirect:/reservations";
     }
@@ -63,7 +67,8 @@ public class ReservationController {
             throw new RuntimeException ("reservation not found for id: " + id);
 
         model.addAttribute("reservation",reservation);
-        model.addAttribute("listReservations", reservationRepository.findAll());
+        model.addAttribute("listChambres", chambreRepository.findAll());
+
         return "update_reservations";
     }
     @PostMapping("/saveUpdate")

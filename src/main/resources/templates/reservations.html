@@ -88,20 +88,7 @@
             </form>
         </div>
 
-<!--        <div class="col">-->
-<!--            <form th:action="@{/employees/filter3}" method="get">-->
-<!--                <div class="form-group">-->
-<!--                    <label>Membre:</label>-->
-<!--                    <select name="depart">-->
-<!--                        <option th:value="0">Select member</option>-->
-<!--                        <option th:each="membr : ${listMembres}"-->
-<!--                                th:value="${membr.id}"-->
-<!--                                th:text="${membr.nom}" th:selected="${membr.id}==${filter3}"></option>-->
-<!--                    </select>-->
-<!--                    <button type="submit">Search</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
+
 
     <div class="row mt-4">
         <div class="col">
@@ -117,7 +104,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Numero chambre</th>
+            <th>numero chambre</th>
             <th>nombre de personnes</th>
             <th>date</th>
             <th>Actions</th>
@@ -125,7 +112,7 @@
         </thead>
         <tbody>
         <tr th:each="reservation : ${listReservations}">
-            <td th:text="${reservation.num_chambre}"></td>
+            <td th:text="${reservation.chambre.num_chambre}"></td>
             <td th:text="${reservation.nbre_personne}"></td>
             <td th:text="${#calendars.format(reservation.date,'dd/MM/yyyy')}"></td>
             <td><a th:href="@{/reservations/update(id=${reservation.id})}" class="btn btn-primary">Update</a>

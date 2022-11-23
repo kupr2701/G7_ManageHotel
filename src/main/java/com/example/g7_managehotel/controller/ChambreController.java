@@ -2,6 +2,7 @@ package com.example.g7_managehotel.controller;
 
 import com.example.g7_managehotel.entities.Chambre;
  import com.example.g7_managehotel.repositories.ChambreRepository;
+import com.example.g7_managehotel.repositories.ReservationRepository;
 import com.example.g7_managehotel.services.impl.ChambresDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +13,16 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
+
 
 @Controller
 @RequestMapping("/chambres")
 public class ChambreController {
 
     private final ChambreRepository chambreRepository;
-
+//    @Autowired
+//    private ReservationRepository reservationRepository;
     private final ChambresDetailsServiceImpl chambresDetailsServiceImpl ;
 
     public ChambreController(ChambreRepository chambreRepository, ChambresDetailsServiceImpl chambresDetailsServiceImpl) {
@@ -71,6 +75,17 @@ public class ChambreController {
         model.addAttribute("chambre",chambre);
         model.addAttribute("listChambres", chambreRepository.findAll());
         return "update_chambres";
+    }
+    @GetMapping("/filter")
+    public String viewHomePageFilter(Model model, @RequestParam(name="motCle", defaultValue="") String e)
+    {
+        model.addAttribute("filter", e);
+        model.addAttribute("listChambres", chambreRepository.findByEtat(e));
+
+//         model.addAttribute("listReservations", reservationRepository.findAll());
+
+
+        return "chambres";
     }
     @PostMapping("/saveUpdate")
     public String saveUpdateChambre(@ModelAttribute("chambre") @Valid Chambre chambre, Errors errors)

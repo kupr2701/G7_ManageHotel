@@ -10,15 +10,12 @@ import java.util.Date;
 
 @Entity
 @Table(name = "reservations")
-public class Reservation implements Serializable{
+public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reservation")
     private Long id;
-
-    @Column(name = "num_chambre")
-    private Integer num_chambre;
 
     @Column(name = "nbre_personne")
     private Integer nbre_personne;
@@ -28,10 +25,11 @@ public class Reservation implements Serializable{
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ch_id")
     private Chambre chambre;
-    public Reservation(Integer nbre_personne, Integer num_chambre, Date date) {
+
+    public Reservation(Integer nbre_personne, Date date, Chambre chambre) {
         this.nbre_personne = nbre_personne;
-        this.num_chambre = num_chambre;
         this.date = date;
+        this.chambre =  chambre;
     }
 
     public Reservation() {
@@ -45,16 +43,7 @@ public class Reservation implements Serializable{
     public void setNbre_personne(Integer nbre_personne) {
         this.nbre_personne = nbre_personne;
     }
-
-    public Integer getNum_chambre() {
-        return num_chambre;
-    }
-
-    public void setNum_chambre(Integer num_chambre) {
-        this.num_chambre = num_chambre;
-    }
-
-    public Date getDate() {
+  public Date getDate() {
         return date;
     }
 

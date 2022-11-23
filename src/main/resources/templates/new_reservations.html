@@ -85,11 +85,6 @@
     <form action="#" th:action="@{/reservations/saveNew}" th:object="${reservation}" method="POST">
 
         <div class="mb-4 col-4">
-            <label th:for="num_chambre">Numero de chambre</label>
-            <input type="number" min="1" max ="100" th:field="*{num_chambre}" placeholder="numero chambre" required class="form-control" />
-            <span class="text-danger" th:errors="*{num_chambre}"></span>
-        </div>
-        <div class="mb-4 col-4">
             <label th:for="nbre_personne">nombre de personne</label>
             <input type="number" min="1" max ="5" th:field="*{nbre_personne}" placeholder="nombre personnes" required class="form-control" />
             <span class="text-danger" th:errors="*{nbre_personne}"></span>
@@ -97,8 +92,18 @@
 
         <div class="mb-4 col-4">
             <label th:for="date">date</label>
-            <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" class="form-control" />
+            <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" required class="form-control" />
             <span class="text-danger" th:errors="*{date}"></span>
+        </div>
+        <div class="mb-4 col-4">
+            <label th:for="chambre">numero chambre</label>
+
+            <select class="form-control" th:field="*{chambre}">
+                <option th:value="0">Select Chambre</option>
+                <option th:each="chambr : ${listChambres}"
+                        th:value="${chambr.id}"
+                        th:text="${chambr.num_chambre}"></option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary col-2">Save</button>
