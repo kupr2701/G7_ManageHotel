@@ -100,7 +100,7 @@ public class ChambreController {
         return "redirect:/chambres";
     }
     @GetMapping("/delete")
-    public String deleteChambre(@RequestParam(name="id") long id, Model model)
+    public String deleteChambre(@RequestParam(name="id") long id)
     {
 
             chambreRepository.deleteById(id);

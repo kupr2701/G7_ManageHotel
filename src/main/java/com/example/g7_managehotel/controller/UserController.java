@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/saveNew")
-    public String RegisterUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto , Errors errors, Model model){
+    public String RegisterUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto , Errors errors){
         if (errors.hasErrors())
         {
             return "user_form";

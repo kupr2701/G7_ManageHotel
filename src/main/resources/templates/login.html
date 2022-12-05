@@ -80,7 +80,7 @@
 <br>
 <div class="container">
 <h1>Login page</h1>
-<form th:action="@{/login}" method="post">
+<form action="#" th:action="@{/login}" th:object="${chambre}" method="post">
   <div>
     <label for="username">username</label>
     <input type="text" name="username" id="username" />

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title> user Management</title>
+    <title>Result</title>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 </head>
 <body>
+
 <header>
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -67,7 +67,7 @@
                         Connexion
                     </a>
                     <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
-                        S'inscrire
+                        S'incrire
                     </a>
                 </div>
             </div>
@@ -78,33 +78,8 @@
     <!-- Navbar -->
 </header>
 <br>
-<div class="container my-2">
-    <h1>Gestion de Utilisateurs</h1>
-    <hr />
-    <a th:href = "@{/users/New}" class="btn btn-primary btn-sm mb-3">ajouter un utilisateur</a>
-    <h2 class="mb-3">Liste Utilisateurs</h2>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>nom d'utilisatuer</th>
-            <th>prenom</th>
-            <th>nom</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user: ${listUsers}">
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.firstname}"></td>
-            <td th:text="${user.lastname}"></td>
-
-            <td><a th:href="@{/users/update(id=${user.id})}" class="btn btn-primary">Modifier</a>
-                <a th:href="@{/users/delete(id=${user.id})}" class="btn btn-danger">Supprimer</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <a th:href = "@{/}" >page d'acceuil</a>
+<div class="container">
+      vous n'etes pas encore inscrit
 </div>
 </body>
 </html>

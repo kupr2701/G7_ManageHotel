@@ -14,8 +14,5 @@ public class G7ManageHotelApplication {
         SpringApplication.run(G7ManageHotelApplication.class, args);
     }
 
-//    @GetMapping("/test")
-//    public List<User> hello(){
-//        return List.of(new User ("joel", "genteeeeuu","kuifo", "yimga"));
-//    }
+
 }
