@@ -79,50 +79,27 @@
 </header>
 <br>
 <div class="container my-2">
-    <div class="row">
-        <div class="col">
-            <form th:action="@{/chambres/filter}" method="get">
-                <div class="form-group">
-                    <label>Etat :</label>
-                    <input type="text" name="etat" th:value="${filter}"/>
-                    <button type="submit">Recherche</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div class="row mt-4">
-            <div class="col">
-                <a th:href = "@{/chambres}" class="btn btn-light btn-outline-dark">Effacer les filtres</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container my-2">
-    <h1>Gestion de  Chambres</h1>
+    <h1>Gestion de Utilisateurs</h1>
     <hr />
-    <a th:href = "@{/chambres/new}" class="btn btn-primary btn-sm mb-3">Ajouter Chambre</a>
-    <h2 class="mb-3">Liste Chambres</h2>
+    <a th:href = "@{/users/New}" class="btn btn-primary btn-sm mb-3">ajouter un utilisateur</a>
+    <h2 class="mb-3">Liste Utilisateurs</h2>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Numero de  Chambre</th>
-            <th>Nombre de  Chambre </th>
-            <th>Etat de Chambre</th>
-            <th>Type de chambre</th>
-
+            <th>nom d'utilisatuer</th>
+            <th>prenom</th>
+            <th>nom</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="chambre : ${listChambres}">
-            <td th:text="${chambre.num_chambre}"></td>
-            <td th:text="${chambre.nbre_place}"></td>
-            <td th:text="${chambre.etat}"></td>
-            <td th:text="${chambre.type}"></td>
+        <tr th:each="user: ${listUsers}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.firstname}"></td>
+            <td th:text="${user.lastname}"></td>
 
-            <td><a th:href="@{/chambres/update(id=${chambre.id})}" class="btn btn-primary">Modifier</a>
-                <a th:href="@{/chambres/delete(id=${chambre.id})}" class="btn btn-danger">Supprimer</a>
+            <td><a th:href="@{/users/update(id=${user.id})}" class="btn btn-primary">Modifier</a>
+                <a th:href="@{/users/delete(id=${user.id})}" class="btn btn-danger">Supprimer</a>
             </td>
         </tr>
         </tbody>

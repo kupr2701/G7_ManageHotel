@@ -63,10 +63,10 @@
                 <!-- Notifications -->
                 <div class="d-flex align-items-center">
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
-                        Login
+                        Connexion
                     </a>
-                    <a class="btn btn-primary me-3" th:href = "@{/user_form}" >
-                        Sign up for free
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
+                        S'inscrire
                     </a>
                 </div>
             </div>
@@ -106,8 +106,8 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary col-2">Save</button>
-        <a th:href = "@{/reservations}" class="btn btn-danger col-2">Cancel</a>
+        <button type="submit" class="btn btn-primary col-2">Enregistrer</button>
+        <a th:href = "@{/reservations}" class="btn btn-danger col-2">Annuler</a>
     </form>
 
     <hr />

@@ -22,21 +22,18 @@ public class User implements UserDetails {
     @Column(name = "id_user")
     private Long id;
 
-
-
-    @NotNull
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @NotNull
+
     @Column(name = "password", nullable = false)
     private String password;
 
-    @NotNull
+
     @Column(name = "lastname", nullable = false)
     private String lastname;
 
-    @NotNull
+
     @Column(name = "firstname", nullable = false)
     private String firstname;
 

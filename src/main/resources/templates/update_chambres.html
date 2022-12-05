@@ -63,10 +63,10 @@
                 <!-- Notifications -->
                 <div class="d-flex align-items-center">
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
-                        Login
+                        Connexion
                     </a>
-                    <a class="btn btn-primary me-3" th:href = "@{/user_form}" >
-                        Sign up for free
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
+                        S'inscrire
                     </a>
                 </div>
             </div>
@@ -81,7 +81,7 @@
 <div class="container">
     <h1>Manage Hotel</h1>
     <hr />
-    <h2>Update Chambre</h2>
+    <h2>Modifer Chambre</h2>
 
 
     <form action="#" th:action="@{/chambres/saveUpdate}" th:object="${chambre}" method="POST">
@@ -132,10 +132,11 @@
 <!--            </select>-->
 <!--        </div>-->
         <div>
-            <button type="submit" class="btn btn-primary col-2">Save</button>
-            <a th:href = "@{/chambres}" class="btn btn-danger col-2">Cancel</a>
+            <button type="submit" class="btn btn-primary col-2">Enregistrer</button>
+            <a th:href = "@{/chambres}" class="btn btn-danger col-2">Annuler</a>
         </div>
     </form>
+    <a th:href = "@{/chambres}" >retour</a>
     <hr />
 </div>
 </body>

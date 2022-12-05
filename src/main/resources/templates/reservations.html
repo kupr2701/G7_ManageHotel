@@ -63,10 +63,10 @@
                 <!-- Notifications -->
                 <div class="d-flex align-items-center">
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
-                        Login
+                        Connexion
                     </a>
-                    <a class="btn btn-primary me-3" th:href = "@{/user_form}" >
-                        Sign up for free
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
+                        S'incrire
                     </a>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 <div class="form-group">
                     <label>date:</label>
                     <input type="date" name="date" th:value="${filter2}"/>
-                    <button type="submit">Search</button>
+                    <button type="submit">Recherche</button>
                 </div>
             </form>
         </div>
@@ -92,14 +92,14 @@
 
     <div class="row mt-4">
         <div class="col">
-            <a th:href = "@{/reservations}" class="btn btn-light btn-outline-dark">Erase filters</a>
+            <a th:href = "@{/reservations}" class="btn btn-light btn-outline-dark">Effacer les Filtres</a>
         </div>
     </div>
 </div>
 <div class="container my-2">
     <h1>gestion de reservations</h1>
     <hr />
-    <a th:href = "@{/reservations/new}" class="btn btn-primary btn-sm mb-3">Add Reservation</a>
+    <a th:href = "@{/reservations/new}" class="btn btn-primary btn-sm mb-3">Nouvelle Reservation</a>
     <h2 class="mb-3">Liste Reservations</h2>
     <table class="table table-striped">
         <thead>
@@ -115,8 +115,8 @@
             <td th:text="${reservation.chambre.num_chambre}"></td>
             <td th:text="${reservation.nbre_personne}"></td>
             <td th:text="${#calendars.format(reservation.date,'dd/MM/yyyy')}"></td>
-            <td><a th:href="@{/reservations/update(id=${reservation.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/reservations/delete(id=${reservation.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a th:href="@{/reservations/update(id=${reservation.id})}" class="btn btn-primary">Modifier</a>
+                <a th:href="@{/reservations/delete(id=${reservation.id})}" class="btn btn-danger">Supprimer</a></td>
         </tr>
         </tbody>
     </table>

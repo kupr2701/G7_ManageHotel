@@ -63,10 +63,10 @@
                 <!-- Notifications -->
                 <div class="d-flex align-items-center">
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
-                        Login
+                        Connexion
                     </a>
-                    <a class="btn btn-primary me-3" th:href = "@{/user_form}" >
-                        Sign up for free
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
+                        S'inscrire
                     </a>
                 </div>
             </div>
@@ -80,7 +80,7 @@
     <div class="container">
         <h1>Manage Hotel</h1>
         <hr />
-        <h2>Update RESERVATION</h2>
+        <h2>Modifier la Reservation</h2>
 
         <form action="#" th:action="@{/reservations/saveUpdate}" th:object="${reservation}" method="POST">
             <div class="mb-4 col-4">
@@ -89,21 +89,21 @@
 
             <div class="mb-4 col-4">
                 <label th:for="nbre_personne">nombre de personne</label>
-                <input type="number" min="1" max ="5" th:field="*{nbre_personne}" placeholder="nombre de personne" required class="form-control" />
+                <input type="number" min="1" max ="10" th:field="*{nbre_personne}" placeholder="nombre de personne" required class="form-control" />
                 <span class="text-danger" th:errors="*{nbre_personne}"></span>
             </div>
 
             <div class="mb-4 col-4">
-                <label th:for="date">date</label>
+                <label th:for="date">Date</label>
                 <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" class="form-control" />
                 <span class="text-danger" th:errors="*{date}"></span>
             </div>
 
-                <button type="submit" class="btn btn-primary col-2">Save</button>
-                <a th:href = "@{/reservations}" class="btn btn-danger col-2">Cancel</a>
+                <button type="submit" class="btn btn-primary col-2">Enregistrer</button>
+                <a th:href = "@{/reservations}" class="btn btn-danger col-2">Annuler</a>
         </form>
-
+        <a th:href = "@{/reservations}" >Retour</a>
         <hr />
-</div>
+     </div>
     </body>
     </html>

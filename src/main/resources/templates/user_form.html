@@ -65,10 +65,10 @@
                 <!-- Notifications -->
                 <div class="d-flex align-items-center">
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
-                        Login
+                        Connexion
                     </a>
-                    <a class="btn btn-primary me-3" th:href = "@{/user_form}" >
-                        Sign up for free
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
+                        S'incrire
                     </a>
                 </div>
             </div>
@@ -81,39 +81,47 @@
 <br>
 <div class="container-fluid text-md-center" >
     <div> <h2>Nouveau Compte</h2></div>
-    <form th:action="@{/user_form}" method="post" th:object="${user}" style="max-width: 500px; margin: 0 auto;">
+    <form th:action="@{/users/saveNew}" method="post" th:object="${user}" style="max-width: 500px; margin: 0 auto;">
     <div class="border border-secondary rounded p-3">
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">nom d'utilisateur</label>
+            <label class="col-sm-4 col-form-label text-left" th:for="username">nom d'utilisateur :</label>
             <div class="col-sm-8">
-                <input type="text " class="form-control"/>
+                <input type="text"  th:field="*{username}" placeholder="joel"  required class="form-control" />
+                <span class="text-danger" th:errors="*{username}"></span>
             </div>
         </div>
+        <br>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">mot de passe : </label>
+            <label class="col-sm-4 col-form-label text-left" th:for="password">mot de passe :</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" />
+                <input type="password" th:field="*{password}" placeholder="********"  required class="form-control" />
+                <span class="text-danger" th:errors="*{password}"></span>
             </div>
         </div>
+        <br>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">nom :</label>
+            <label class="col-sm-4 col-form-label text-left" th:for="firstname">prenom :</label>
             <div class="col-sm-8">
-                <input type="text " class="form-control" />
+                <input type="text" th:field="*{firstname}" placeholder="prenom"  required class="form-control" />
+                <span class="text-danger" th:errors="*{firstname}"></span>
             </div>
         </div>
+        <br>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">pre-nom : </label>
+            <label class="col-sm-4 col-form-label text-left" th:for="lastname">nom :</label>
             <div class="col-sm-8">
-                <input type="text " class="form-control" />
+                <input type="text" th:field="*{lastname}" placeholder="nom"  required class="form-control" />
+                <span class="text-danger" th:errors="*{lastname}"></span>
             </div>
         </div>
+        <br>
         <div class="text-center">
             <button  type="submit" class="btn btn-primary m-2" >enregistrer</button>
             <button  type="submit" class="btn btn-secondary m-2">annuler</button>
-         <a class="btn btn-d" th:href = "@{/user_form}" >Register</a>
         </div>
     </div>
         </form>
+    <a th:href = "@{/}" >page d'accueil</a>
 </div>
 </body>
 
