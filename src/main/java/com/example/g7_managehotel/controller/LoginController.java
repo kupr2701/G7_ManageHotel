@@ -22,21 +22,6 @@ import java.util.Optional;
 @RequestMapping("/login")
 public class LoginController {
 
-    @Autowired
-    private UsersDetailsServiceImpl userService;
-    @Autowired  private UserRepository userRepository;
-
-    @GetMapping("/res")
-    public String LoginForm( @RequestParam(name="motCle", defaultValue="") String d , Model model)
-    {
-        model.addAttribute("res", d);
-
-        User userObj = (User) userService.loadUserByUsername(d);
-        if ( userObj == null )
-               return  "result";
-        return "redirect:/reservations";
-    }
-
     @GetMapping()
     public String login() {
 

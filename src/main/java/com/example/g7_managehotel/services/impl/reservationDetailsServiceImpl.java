@@ -18,7 +18,7 @@ public class reservationDetailsServiceImpl {
     }
     public static Reservation save(Reservation resev) {
 
-        Reservation reservation = new Reservation (resev.getNbre_personne(),  resev.getDate(), resev.getChambre());
+        Reservation reservation = new Reservation (resev.getNbre_personne(),  resev.getDate(), resev.getChambre(), resev.getUser());
 
         return reservationRepository.save(reservation);
     }

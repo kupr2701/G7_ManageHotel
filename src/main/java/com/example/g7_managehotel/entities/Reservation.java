@@ -30,11 +30,19 @@ public class Reservation {
     @JoinColumn(name = "us_id", nullable = false)
     private User user;
 
+    public User getUser() {
+        return user;
+    }
 
-    public Reservation(Integer nbre_personne, Date date, Chambre chambre) {
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Reservation(Integer nbre_personne, Date date, Chambre chambre, User user) {
         this.nbre_personne = nbre_personne;
         this.date = date;
         this.chambre =  chambre;
+        this.user = user;
     }
 
     public Reservation() {

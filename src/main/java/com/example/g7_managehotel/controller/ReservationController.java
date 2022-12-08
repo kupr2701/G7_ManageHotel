@@ -13,6 +13,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 @Controller
@@ -41,6 +43,7 @@ public class ReservationController {
 
         model.addAttribute("reservation", reservation);
         model.addAttribute("listChambres", chambreRepository.findAll());
+        model.addAttribute("listUsers", userRepository.findAll());
 
         return "new_reservations";
     }
@@ -51,6 +54,7 @@ public class ReservationController {
         if (errors.hasErrors())
         {
             model.addAttribute("listChambres", chambreRepository.findAll());
+            model.addAttribute("listUsers", userRepository.findAll());
             return "new_reservations";
         }
 
@@ -71,6 +75,8 @@ public class ReservationController {
         model.addAttribute("listUsers", userRepository.findAll());
         return "reservations";
     }
+
+
     @GetMapping("/update")
     public String showUpdateReservationForm(@RequestParam(name="id") long id, Model model)
     {
@@ -83,6 +89,7 @@ public class ReservationController {
 
         model.addAttribute("reservation",reservation);
         model.addAttribute("listChambres", chambreRepository.findAll());
+        model.addAttribute("listUsers", userRepository.findAll());
 
         return "update_reservations";
     }

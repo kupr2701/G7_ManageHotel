@@ -4,6 +4,7 @@ import com.example.g7_managehotel.entities.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
@@ -11,4 +12,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> chercherReservationParNumUser(long num);
 
 
+    public List<Reservation> findByDateIs(Date date);
 }

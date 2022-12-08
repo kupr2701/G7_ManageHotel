@@ -105,6 +105,16 @@
                         th:text="${chambr.num_chambre}"></option>
             </select>
         </div>
+        <div class="mb-4 col-4">
+            <label th:for="user">personne</label>
+
+            <select class="form-control" th:field="*{user}">
+                <option th:value="0">Select utilisateur</option>
+                <option th:each="user : ${listUsers}"
+                        th:value="${user.id}"
+                        th:text="${user.username}"></option>
+            </select>
+        </div>
 
 
         <button type="submit" class="btn btn-primary col-2">Enregistrer</button>
