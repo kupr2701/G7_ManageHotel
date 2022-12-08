@@ -107,6 +107,7 @@
             <th>numero chambre</th>
             <th>nombre de personnes</th>
             <th>date</th>
+            <th>personne</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -115,6 +116,7 @@
             <td th:text="${reservation.chambre.num_chambre}"></td>
             <td th:text="${reservation.nbre_personne}"></td>
             <td th:text="${#calendars.format(reservation.date,'dd/MM/yyyy')}"></td>
+            <td th:text="${reservation.user.username}"></td>
             <td><a th:href="@{/reservations/update(id=${reservation.id})}" class="btn btn-primary">Modifier</a>
                 <a th:href="@{/reservations/delete(id=${reservation.id})}" class="btn btn-danger">Supprimer</a></td>
         </tr>

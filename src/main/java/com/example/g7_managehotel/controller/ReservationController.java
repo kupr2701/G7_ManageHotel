@@ -4,6 +4,7 @@ package com.example.g7_managehotel.controller;
 import com.example.g7_managehotel.entities.Reservation;
 import com.example.g7_managehotel.repositories.ChambreRepository;
 import com.example.g7_managehotel.repositories.ReservationRepository;
+import com.example.g7_managehotel.repositories.UserRepository;
 import com.example.g7_managehotel.services.impl.reservationDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RequestMapping("/reservations")
 public class ReservationController {
 
+    @Autowired  private UserRepository userRepository;
     @Autowired
     private ReservationRepository reservationRepository;
     private final ChambreRepository chambreRepository;
@@ -55,6 +57,19 @@ public class ReservationController {
         reservationDetailsServiceImpl.save(reservation);
 
         return "redirect:/reservations";
+    }
+    @GetMapping("/View")
+    public String viewHomePage(Model model, @RequestParam(name="user", defaultValue="") String d)
+    {
+        long num = Long.parseLong(d);
+        if (num == 0)
+            model.addAttribute("listReservations", reservationRepository.findAll());
+        else
+            model.addAttribute("listReservations", reservationRepository.chercherReservationParNumUser(num));
+
+        model.addAttribute("View", d);
+        model.addAttribute("listUsers", userRepository.findAll());
+        return "reservations";
     }
     @GetMapping("/update")
     public String showUpdateReservationForm(@RequestParam(name="id") long id, Model model)

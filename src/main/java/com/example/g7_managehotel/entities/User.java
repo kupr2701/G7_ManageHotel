@@ -9,14 +9,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
@@ -37,6 +40,11 @@ public class User implements UserDetails {
     @Column(name = "firstname", nullable = false)
     private String firstname;
 
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY ,mappedBy = "user")
+    private List<Reservation> reservations = new ArrayList<>();;
+
+
     @ElementCollection(targetClass = RoleEnum.class, fetch = FetchType.EAGER)
     @Cascade(value = org.hibernate.annotations.CascadeType.REMOVE)
     @JoinTable(
@@ -48,8 +56,6 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Collection<RoleEnum> roles;
 
-//    @OneToOne(fetch = FetchType.EAGER, mappedBy = "chambre")
-//    private Chambre chambre;
 
     @Column(name = "account_non_expired")
     private boolean accountNonExpired;
@@ -80,8 +86,6 @@ public class User implements UserDetails {
         this.firstname = firstname;
 
     }
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -151,6 +155,14 @@ public class User implements UserDetails {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public void setRoles(Collection<RoleEnum> roles) {

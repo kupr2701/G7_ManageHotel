@@ -134,15 +134,7 @@
             </select>
             <span class="text-danger" th:errors="*{type}"></span>
         </div>
-<!--        <div class="mb-4 col-4">-->
-<!--            <label th:for="reservation">reservation</label>-->
-<!--            <select class="form-control" th:field="*{reservation}">-->
-<!--                <option th:value="0">Select reservation</option>-->
-<!--                <option th:each="categorie : ${listReservations}"-->
-<!--                        th:value="${reservation.id}"-->
-<!--                        th:text="${reservation.date}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
+
         <div>
             <button type="submit" class="btn btn-primary col-2">Enregistrer</button>
             <a th:href = "@{/chambres}" class="btn btn-danger col-2">Annuler</a>

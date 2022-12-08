@@ -3,7 +3,6 @@ package com.example.g7_managehotel.services.impl;
 
 
 import com.example.g7_managehotel.controller.Dto.UserRegistrationDto;
-import com.example.g7_managehotel.entities.Chambre;
 import com.example.g7_managehotel.entities.User;
 import com.example.g7_managehotel.repositories.UserRepository;
 

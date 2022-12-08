@@ -5,6 +5,7 @@ import com.example.g7_managehotel.controller.Dto.UserRegistrationDto;
 import com.example.g7_managehotel.entities.Chambre;
 import com.example.g7_managehotel.entities.Reservation;
 import com.example.g7_managehotel.entities.User;
+import com.example.g7_managehotel.repositories.ReservationRepository;
 import com.example.g7_managehotel.repositories.UserRepository;
 import com.example.g7_managehotel.services.impl.UsersDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,16 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
- @Autowired private UsersDetailsServiceImpl userService;
+    @Autowired
+    private ReservationRepository reservationRepository;
+    @Autowired private UsersDetailsServiceImpl userService;
     @Autowired  private UserRepository userRepository;
 
     @GetMapping()
@@ -39,12 +43,17 @@ public class UserController {
     }
 
     @PostMapping("/saveNew")
-    public String RegisterUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto , Errors errors){
-        if (errors.hasErrors())
-        {
+    public String RegisterUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto , Errors errors) {
+        String tmpUsername = userRegistrationDto.getUsername();
+        User obj = null;
+        if (errors.hasErrors()) {
             return "user_form";
+        } else if (tmpUsername != null && !"".equals(tmpUsername)) {
+            obj = userRepository.findByUsername(tmpUsername);
         }
-
+        if (obj != null) {
+                throw  new RuntimeException("user " +tmpUsername +"exists already");
+        }
         userService.save(userRegistrationDto);
         return "redirect:/users";
     }
@@ -52,8 +61,9 @@ public class UserController {
     @GetMapping("/delete")
     public String deleteUser(@RequestParam(name="id") long id)
     {
-
-        userRepository.deleteById(id);
+        List<Reservation> myList = reservationRepository.chercherReservationParNumUser(id);
+        if (myList.isEmpty())
+              userRepository.deleteById(id);
         return "redirect:/users";
     }
 
@@ -78,7 +88,6 @@ public class UserController {
         {
             return "update_users";
         }
-
         userRepository.save(user);
         return "redirect:/users";
     }

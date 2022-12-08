@@ -21,8 +21,7 @@ import java.util.Scanner;
 public class ChambreController {
 
     private final ChambreRepository chambreRepository;
-//    @Autowired
-//    private ReservationRepository reservationRepository;
+
     private final ChambresDetailsServiceImpl chambresDetailsServiceImpl ;
 
     public ChambreController(ChambreRepository chambreRepository, ChambresDetailsServiceImpl chambresDetailsServiceImpl) {
@@ -47,21 +46,18 @@ public class ChambreController {
 
         return "new_chambres";
     }
+
     @PostMapping("/saveNew")
     public String saveNewChambre(@ModelAttribute("chambre") @Valid Chambre chambre, Errors errors, Model model)
     {
-
         if (errors.hasErrors())
         {
             return "new_chambres";
         }
-
         chambresDetailsServiceImpl.save(chambre);
-//        model.addAttribute("listChambres", chambreRepository.findAll());
-//        model.addAttribute("listReservation", reservationRepository.findAll());
-
         return "redirect:/chambres";
     }
+
     @GetMapping("/update")
     public String showUpdateChambreForm(@RequestParam(name="id") long id, Model model)
     {
@@ -76,17 +72,15 @@ public class ChambreController {
         model.addAttribute("listChambres", chambreRepository.findAll());
         return "update_chambres";
     }
+
     @GetMapping("/filter")
     public String viewHomePageFilter(Model model, @RequestParam(name="motCle", defaultValue="") String e)
     {
         model.addAttribute("filter", e);
         model.addAttribute("listChambres", chambreRepository.findByEtat(e));
-
-//         model.addAttribute("listReservations", reservationRepository.findAll());
-
-
         return "chambres";
     }
+
     @PostMapping("/saveUpdate")
     public String saveUpdateChambre(@ModelAttribute("chambre") @Valid Chambre chambre, Errors errors)
     {
@@ -95,14 +89,13 @@ public class ChambreController {
             return "update_chambres";
         }
 
-//        chambresDetailsServiceImpl
         chambreRepository.save(chambre);
         return "redirect:/chambres";
     }
+
     @GetMapping("/delete")
     public String deleteChambre(@RequestParam(name="id") long id)
     {
-
             chambreRepository.deleteById(id);
         return "redirect:/chambres";
     }

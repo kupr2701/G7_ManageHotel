@@ -2,6 +2,7 @@ package com.example.g7_managehotel.controller;
 
 
 import com.example.g7_managehotel.controller.Dto.LoginSignDto;
+import com.example.g7_managehotel.controller.Dto.UserRegistrationDto;
 import com.example.g7_managehotel.entities.Chambre;
 import com.example.g7_managehotel.entities.User;
 import com.example.g7_managehotel.repositories.UserRepository;
@@ -25,24 +26,20 @@ public class LoginController {
     private UsersDetailsServiceImpl userService;
     @Autowired  private UserRepository userRepository;
 
-    @GetMapping()
-    public String LoginForm(@RequestParam(name="username") String username, Errors errors)
+    @GetMapping("/res")
+    public String LoginForm( @RequestParam(name="motCle", defaultValue="") String d , Model model)
     {
+        model.addAttribute("res", d);
 
-        List<User> use = (List<User>) userRepository.findByUsername(username);
-
-        if (errors.hasErrors())
-            throw new RuntimeException ("not found");
-        else
-          if (! use.isEmpty())
-            return "result";
-
+        User userObj = (User) userService.loadUserByUsername(d);
+        if ( userObj == null )
+               return  "result";
         return "redirect:/reservations";
     }
 
-    @PostMapping("/login")
+    @GetMapping()
     public String login() {
 
-        return "redirect:/chambres";
+        return "login";
     }
 }
