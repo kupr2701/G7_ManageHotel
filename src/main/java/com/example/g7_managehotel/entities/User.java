@@ -51,7 +51,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Collection<RoleEnum> roles;
 
-//    @OneToOne(fetch = FetchType.EAGER, mappedBy = "chambre")
+//    @OneToOne(fetch = FetchTypde.EAGER, mappedBy = "chambre")
 //    private Chambre chambre;
 
     @Column(name = "account_non_expired")
