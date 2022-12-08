@@ -42,15 +42,7 @@
           <li class="nav-item">
             <a class="nav-link" th:href="@{/}">HOME</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/chambres}">Chambres</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/reservations}">Reservations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/users}">Utilisateurs</a>
-          </li>
+
         </ul>
         <!-- Left links -->
       </div>
@@ -83,6 +75,13 @@
 <div class="container" >
 <!--  </marquee>-->
   <h1>HOTEL MANAGEMENT </h1>
+  <a class="btn btn-primary me-3" th:href = "@{/users}" >
+     admin
+  </a>
+  <a class="btn btn-primary me-3" th:href = "@{/chambres}" >
+    utilisateurs
+  </a>
+
 
 </div>
 </body>
