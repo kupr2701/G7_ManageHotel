@@ -67,6 +67,7 @@
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
                         Connexion
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}">
                         S'inscrire
                     </a>
                 </div>
@@ -83,8 +84,8 @@
         <div class="col">
             <form th:action="@{/chambres/filter}" method="get">
                 <div class="form-group">
-                    <label>Etat :</label>
-                    <input type="text" name="etat" th:value="${filter}"/>
+                    <label>Type :</label>
+                    <input type="text" name="type" th:value="${filter}"/>
                     <button type="submit">Recherche</button>
                 </div>
             </form>

@@ -86,7 +86,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label " th:for="username">nom d'utilisateur :</label>
             <div class="col-sm-8">
-                <input type="text"  th:field="*{username}" placeholder="joel"  required class="form-control" />
+                <input type="text"  th:field="*{username}" placeholder="ex: joel"  required class="form-control" />
                 <span class="text-danger" th:errors="*{username}"></span>
             </div>
         </div>
@@ -94,7 +94,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label " th:for="password">mot de passe :</label>
             <div class="col-sm-8">
-                <input type="password" th:field="*{password}" placeholder="********"  required class="form-control" />
+                <input type="password" th:field="*{password}" placeholder="ex: ********"  required class="form-control" />
                 <span class="text-danger" th:errors="*{password}"></span>
             </div>
         </div>
@@ -102,7 +102,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label " th:for="firstname">prenom :</label>
             <div class="col-sm-8">
-                <input type="text" th:field="*{firstname}" placeholder="prenom"  required class="form-control" />
+                <input type="text" th:field="*{firstname}" placeholder="ex: john"  required class="form-control" />
                 <span class="text-danger" th:errors="*{firstname}"></span>
             </div>
         </div>
@@ -110,7 +110,7 @@
         <div class="form-group row">
             <label class="col-sm-4 col-form-label " th:for="lastname">nom :</label>
             <div class="col-sm-8">
-                <input type="text" th:field="*{lastname}" placeholder="nom"  required class="form-control" />
+                <input type="text" th:field="*{lastname}" placeholder="ex: jones"  required class="form-control" />
                 <span class="text-danger" th:errors="*{lastname}"></span>
             </div>
         </div>
