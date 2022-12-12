@@ -104,6 +104,19 @@ public class ReservationController {
         reservationRepository.save(reservation);
         return "redirect:/reservations";
     }
+    @GetMapping("/reservations/filter1")
+    public String viewPageFilter1(Model model, @RequestParam(name="user", defaultValue="") String d)
+    {
+        long num = Long.parseLong(d);
+        if (num == 0)
+            model.addAttribute("listReservations", reservationRepository.findAll());
+        else
+            model.addAttribute("listReservations", reservationRepository.chercherReservationParNumUser(num));
+
+        model.addAttribute("filter1", d);
+        model.addAttribute("listUsers", userRepository.findAll());
+        return "reservations";
+    }
     @GetMapping("/delete")
     public String deleteReservation(@RequestParam(name="id") long id)
     {

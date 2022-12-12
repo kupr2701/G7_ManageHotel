@@ -78,6 +78,27 @@
 </header>
 <br>
 <div class="container my-2">
+    <div class="row">
+      <div class="col">
+        <form th:action="@{/reservations/filter1}" method="get">
+            <div class="form-group">
+                <label>Utilisateurs:</label>
+                <select name="user" >
+                    <option th:value="0">Select l'utisateur</option>
+                    <option th:each="us : ${listUsers}"
+                            th:value="${us.id}"
+                            th:text="${us.username}" th:selected="${us.id}==${filter1}"></option>
+                </select>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+   </div>
+   <div class="row mt-4">
+    <div class="col">
+        <a th:href = "@{/reservations}" class="btn btn-light btn-outline-dark">Erase filters</a>
+    </div>
+   </div>
 
 
     <h1>gestion de reservations</h1>
@@ -105,7 +126,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href = "@{/reservations}"> retour</a>
+    <a th:href = "@{/reservations}">retour</a>
 </div>
 </body>
 </html>
