@@ -34,6 +34,8 @@ public class ReservationController {
     public String listReservation(Model model) {
 
         model.addAttribute("listReservations", reservationRepository.findAll());
+        model.addAttribute("listChambres", chambreRepository.findAll());
+        model.addAttribute("listUsers", userRepository.findAll());
 
         return "reservations";
     }
@@ -104,16 +106,16 @@ public class ReservationController {
         reservationRepository.save(reservation);
         return "redirect:/reservations";
     }
-    @GetMapping("/reservations/filter1")
-    public String viewPageFilter1(Model model, @RequestParam(name="user", defaultValue="") String d)
+    @GetMapping("/filter1")
+    public String viewPageFilter1(Model model, @RequestParam(name="user", defaultValue="") String e)
     {
-        long num = Long.parseLong(d);
+        long num = Long.parseLong(e);
         if (num == 0)
             model.addAttribute("listReservations", reservationRepository.findAll());
         else
             model.addAttribute("listReservations", reservationRepository.chercherReservationParNumUser(num));
 
-        model.addAttribute("filter1", d);
+        model.addAttribute("filter1", e);
         model.addAttribute("listUsers", userRepository.findAll());
         return "reservations";
     }
