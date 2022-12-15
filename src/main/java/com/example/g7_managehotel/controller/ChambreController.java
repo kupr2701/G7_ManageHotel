@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 @Controller
 @RequestMapping("/chambres")
-public class ChambreController {
+public class    ChambreController {
 
     private final ChambreRepository chambreRepository;
 
