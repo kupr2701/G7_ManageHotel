@@ -63,6 +63,9 @@
             <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
               S'inscrire
             </a>
+            <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+              deconnexion
+            </a>
           </div>
       </div>
       <!-- Right elements -->
@@ -75,6 +78,10 @@
 <div class="container" >
 <!--  </marquee>-->
   <h1>HOTEL MANAGEMENT </h1>
+
+  <p sec:authorize="isAnonymous()" ><a th:href="@{/login}"></a></p>
+  <p sec:authorize="isAuthenticated()" th:href="@{/logout}"></a></p>
+
   <a class="btn btn-primary me-3" th:href = "@{/users}" >
      admin
   </a>

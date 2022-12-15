@@ -13,8 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 @Controller
@@ -103,7 +101,7 @@ public class ReservationController {
             return "update_reservations";
         }
 
-        reservationRepository.save(reservation);
+        reservationDetailsServiceImpl.save(reservation);
         return "redirect:/reservations";
     }
     @GetMapping("/filter1")

@@ -70,6 +70,9 @@
                     <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
                         S'incrire
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+                        deconnexion
+                    </a>
                 </div>
             </div>
             <!-- Right elements -->
@@ -118,7 +121,7 @@
 
         <div class="text-center">
             <button  type="submit" class="btn btn-primary m-2" >enregistrer</button>
-            <button  type="submit" class="btn btn-secondary m-2">annuler</button>
+            <a th:href = "@{/}" class="btn btn-secondary m-2">Annuler</a>
         </div>
     </div>
         </form>

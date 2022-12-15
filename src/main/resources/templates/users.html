@@ -70,6 +70,9 @@
                     <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
                         S'inscrire
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+                        deconnexion
+                    </a>
                 </div>
             </div>
             <!-- Right elements -->
@@ -101,7 +104,8 @@
             <td th:text="${user.firstname}"></td>
             <td th:text="${user.lastname}"></td>
 
-            <td><a th:href="@{/users/update(id=${user.id})}" class="btn btn-primary">Modifier</a>
+            <td>
+                <a th:href="@{/users/update(id=${user.id})}" class="btn btn-primary">Modifier</a>
                 <a th:href="@{/users/delete(id=${user.id})}" class="btn btn-danger">Supprimer</a>
                 <a th:href="@{/reservations/View(user=${user.id})}" class="btn btn-success">Voir les Reservations</a>
 
