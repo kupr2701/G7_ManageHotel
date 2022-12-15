@@ -44,18 +44,13 @@ public class UserController {
 
     @PostMapping("/saveNew")
     public String RegisterUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto , Errors errors) {
-        String tmpUsername = userRegistrationDto.getUsername();
-        User obj = null;
         if (errors.hasErrors()) {
+
             return "user_form";
-        } else if (tmpUsername != null && !"".equals(tmpUsername)) {
-            obj = userRepository.findByUsername(tmpUsername);
         }
-        if (obj != null) {
-                throw  new RuntimeException("user " +tmpUsername +"exists already");
-        }
+
         userService.save(userRegistrationDto);
-        return "redirect:/users";
+        return "result";
     }
 
     @GetMapping("/delete")
@@ -82,13 +77,13 @@ public class UserController {
         return "update_users";
     }
     @PostMapping("/saveUpdate")
-    public String saveUpdateUser(@ModelAttribute("user") @Valid User user, Errors errors)
+    public String saveUpdateUser(@ModelAttribute("user") @Valid UserRegistrationDto user, Errors errors)
     {
         if (errors.hasErrors())
         {
             return "update_users";
         }
-        userRepository.save(user);
+        userService.save(user);
         return "redirect:/users";
     }
 

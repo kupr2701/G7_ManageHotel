@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
-<head>
+<head >
     <title>index</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 </head>
-<body>
+<body >
 <header>
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -68,6 +68,9 @@
                     <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
                         S'incrire
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+                        deconnexion
+                    </a>
                 </div>
             </div>
             <!-- Right elements -->
@@ -78,14 +81,29 @@
 </header>
 <br>
 <div class="container my-2">
-
-    <div class="row mt-4">
-        <div class="col">
-            <a th:href = "@{/reservations}" class="btn btn-light btn-outline-dark">Effacer les Filtres</a>
-        </div>
+    <div class="row">
+      <div class="col">
+        <form th:action="@{/reservations/filter1}" method="get">
+            <div class="form-group">
+                <label>Utilisateurs:</label>
+                <select name="user" >
+                    <option th:value="0">Select l'utisateur</option>
+                    <option th:each="us : ${listUsers}"
+                            th:value="${us.id}"
+                            th:text="${us.username}" th:selected="${us.id}==${filter1}"></option>
+                </select>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+      </div>
+   </div>
+   <div class="row mt-4">
+    <div class="col">
+        <a th:href = "@{/reservations}" class="btn btn-light btn-outline-dark">Erase filters</a>
     </div>
-</div>
-<div class="container my-2">
+   </div>
+
+
     <h1>gestion de reservations</h1>
     <hr />
     <a th:href = "@{/reservations/new}" class="btn btn-primary btn-sm mb-3">Nouvelle Reservation</a>
@@ -111,7 +129,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href = "@{/}" >page d'accueil</a>
+    <a th:href = "@{/reservations}">retour</a>
 </div>
 </body>
 </html>

@@ -68,6 +68,9 @@
                     <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
                         S'inscrire
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+                        deconnexion
+                    </a>
                 </div>
             </div>
             <!-- Right elements -->
@@ -86,13 +89,13 @@
 
         <div class="mb-4 col-4">
             <label th:for="nbre_personne">nombre de personne</label>
-            <input type="number" min="1" max ="5" th:field="*{nbre_personne}" placeholder="nombre personnes" required class="form-control" />
+            <input type="number" min="1" max ="10" th:field="*{nbre_personne}" placeholder="max 10" required class="form-control" />
             <span class="text-danger" th:errors="*{nbre_personne}"></span>
         </div>
 
         <div class="mb-4 col-4">
             <label th:for="date">date</label>
-            <input type="date" th:field="*{date}" placeholder="dd-mm-yyyy" required class="form-control" />
+            <input type="date" th:field="*{date}" min="2022-12-15"  placeholder="dd-mm-yyyy" required class="form-control" />
             <span class="text-danger" th:errors="*{date}"></span>
         </div>
         <div class="mb-4 col-4">

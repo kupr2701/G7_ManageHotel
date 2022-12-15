@@ -49,6 +49,7 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/reservations}">Reservations</a>
                     </li>
+
                 </ul>
                 <!-- Left links -->
             </div>
@@ -66,7 +67,11 @@
                     <a class="btn btn-link px-3 me-2" th:href = "@{/login}">
                         Connexion
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/users/New}">
                         S'inscrire
+                    </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+                        deconnexion
                     </a>
                 </div>
             </div>
@@ -82,14 +87,12 @@
         <div class="col">
             <form th:action="@{/chambres/filter}" method="get">
                 <div class="form-group">
-                    <label>Etat :</label>
-                    <input type="text" name="etat" th:value="${filter}"/>
+                    <label>Type :</label>
+                    <input type="text" name="type" th:value="${filter}"/>
                     <button type="submit">Recherche</button>
                 </div>
             </form>
         </div>
-
-
         <div class="row mt-4">
             <div class="col">
                 <a th:href = "@{/chambres}" class="btn btn-light btn-outline-dark">Effacer les filtres</a>
@@ -100,7 +103,6 @@
 <div class="container my-2">
     <h1>Gestion de  Chambres</h1>
     <hr />
-    <a th:href = "@{/chambres/new}" class="btn btn-primary btn-sm mb-3">Ajouter Chambre</a>
     <h2 class="mb-3">Liste Chambres</h2>
     <table class="table table-striped">
         <thead>
@@ -126,7 +128,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href = "@{/}" >page d'acceuil</a>
+    <a th:href = "@{/chambres}" >retour</a>
 </div>
 </body>
 </html>

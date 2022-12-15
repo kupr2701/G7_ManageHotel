@@ -13,8 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 @Controller
@@ -34,6 +32,8 @@ public class ReservationController {
     public String listReservation(Model model) {
 
         model.addAttribute("listReservations", reservationRepository.findAll());
+        model.addAttribute("listChambres", chambreRepository.findAll());
+        model.addAttribute("listUsers", userRepository.findAll());
 
         return "reservations";
     }
@@ -101,8 +101,21 @@ public class ReservationController {
             return "update_reservations";
         }
 
-        reservationRepository.save(reservation);
+        reservationDetailsServiceImpl.save(reservation);
         return "redirect:/reservations";
+    }
+    @GetMapping("/filter1")
+    public String viewPageFilter1(Model model, @RequestParam(name="user", defaultValue="") String e)
+    {
+        long num = Long.parseLong(e);
+        if (num == 0)
+            model.addAttribute("listReservations", reservationRepository.findAll());
+        else
+            model.addAttribute("listReservations", reservationRepository.chercherReservationParNumUser(num));
+
+        model.addAttribute("filter1", e);
+        model.addAttribute("listUsers", userRepository.findAll());
+        return "reservations";
     }
     @GetMapping("/delete")
     public String deleteReservation(@RequestParam(name="id") long id)

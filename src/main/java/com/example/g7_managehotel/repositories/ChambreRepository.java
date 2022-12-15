@@ -12,8 +12,7 @@ import java.util.List;
 @Repository
 public interface ChambreRepository extends JpaRepository<Chambre, Long> {
 
-    @Query("select c from Chambre c where c.etat = ?1")
-    List<Chambre> findByEtat(String e);
-
+//    @Query("select c from Chambre c where c.type = ?1")
+    List<Chambre> findByType(String e);
 
 }

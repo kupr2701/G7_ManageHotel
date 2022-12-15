@@ -74,10 +74,10 @@ public class    ChambreController {
     }
 
     @GetMapping("/filter")
-    public String viewHomePageFilter(Model model, @RequestParam(name="motCle", defaultValue="") String e)
+    public String viewHomePageFilter(Model model, @RequestParam(name="type", defaultValue="") String e)
     {
         model.addAttribute("filter", e);
-        model.addAttribute("listChambres", chambreRepository.findByEtat(e));
+        model.addAttribute("listChambres", chambreRepository.findByType(e));
         return "chambres";
     }
 

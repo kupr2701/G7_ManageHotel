@@ -68,6 +68,9 @@
                     <a class="btn btn-primary me-3" th:href = "@{/users/New}" >
                         S'inscrire
                     </a>
+                    <a class="btn btn-primary me-3" th:href = "@{/logout}" >
+                        deconnexion
+                    </a>
                 </div>
             </div>
             <!-- Right elements -->
@@ -90,12 +93,12 @@
         </div>
         <div class="mb-4 col-4">
             <label th:for="num_chambre">numero de chambre</label>
-            <input type="number" min="1000" max="4000"  th:field="*{num_chambre}" placeholder="n 1000" required class="form-control" />
+            <input type="number" min="1000" max="4000"  th:field="*{num_chambre}" placeholder="min 1000" required class="form-control" />
             <span class="text-danger" th:errors="*{num_chambre}"></span>
         </div>
         <div class="mb-4 col-4">
             <label th:for="nbre_place">nombre place</label>
-            <input type="number" th:field="*{nbre_place}" placeholder="maximum 10" required class="form-control" />
+            <input type="number" th:field="*{nbre_place}" placeholder="max 10" required class="form-control" />
             <span class="text-danger" th:errors="*{nbre_place}"></span>
         </div>
         <div class="mb-4 col-4">
